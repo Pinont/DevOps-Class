@@ -1,0 +1,15 @@
+name: "Workflow4"
+
+on:
+  workflow_run:
+    workflows: ["workflow2"]
+    types:
+      - completed
+
+jobs:
+  builds:
+    runs-on: ubuntu-latest
+    steps:
+        - uses: actions/checkout@v3
+        - name: "ls -la"
+          run: ls -la

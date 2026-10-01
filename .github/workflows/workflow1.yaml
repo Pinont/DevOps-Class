@@ -1,0 +1,10 @@
+name: workflow1
+
+on: push
+
+jobs:
+    builds:
+        runs-on: ubuntu-latest
+        steps:
+            - name: "test"
+              run: echo "test"
