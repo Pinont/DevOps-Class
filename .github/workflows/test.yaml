@@ -1,0 +1,19 @@
+name: test
+
+on: [push]
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Install node js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Run Test
+        run: node dist/test1.js
