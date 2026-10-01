@@ -22,4 +22,4 @@ jobs:
         run: tsc
 
       - name: Run Test
-        run: node dist/test1.ts
+        run: node dist/test1.js

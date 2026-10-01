@@ -23,4 +23,4 @@ jobs:
         run: tsc
 
       - name: Run Test
-        run: node dist/test2.ts
+        run: node dist/IntegrationTest.js
