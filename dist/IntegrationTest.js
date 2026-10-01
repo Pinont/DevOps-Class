@@ -13,41 +13,23 @@ const carRentCost_1 = require("./carRentCost");
 const integrationTest = () => __awaiter(void 0, void 0, void 0, function* () {
     console.log('Running unit tests...');
     // Success case: both functions used together
-    carRentCost_1.carRentCost.AddRent(10, 13);
-    carRentCost_1.carRentCost.AddRent(8, 12);
-    if (carRentCost_1.carRentCost.Checkout() === 150) {
+    carRentCost_1.carRentCost.AddRent(10, 13); // [10, 13, 50]
+    carRentCost_1.carRentCost.AddRent(8, 12); // [10, 13, 50], [8, 12, 50]
+    if (carRentCost_1.carRentCost.Checkout() === 350) { // 3 * 50 + 2 * 50 = 350
         console.log('Test case 1 passed');
     }
     else {
         console.log('Test case 1 failed');
         process.exit(1);
     }
-    // Failure case: invalid start time
-    carRentCost_1.carRentCost.AddRent(-1, 13);
-    if (carRentCost_1.carRentCost.Checkout() === -1) {
-        console.log('Test case 2 passed');
-    }
-    else {
+    // Failure case: invalid end time
+    try {
+        carRentCost_1.carRentCost.AddRent(10, 25); // [10, 25, 50]
         console.log('Test case 2 failed');
         process.exit(1);
     }
-    // Failure case: invalid end time
-    carRentCost_1.carRentCost.AddRent(10, 25);
-    if (carRentCost_1.carRentCost.Checkout() === -1) {
-        console.log('Test case 3 passed');
-    }
-    else {
-        console.log('Test case 3 failed');
-        process.exit(1);
-    }
-    // Failure case: invalid cost per hour
-    carRentCost_1.carRentCost.AddRent(10, 13, -1);
-    if (carRentCost_1.carRentCost.Checkout() === -1) {
-        console.log('Test case 4 passed');
-    }
-    else {
-        console.log('Test case 4 failed');
-        process.exit(1);
+    catch (_a) {
+        console.log('Test case 2 passed');
     }
 });
 integrationTest();

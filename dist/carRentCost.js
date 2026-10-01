@@ -18,14 +18,17 @@ function AddRent(startTimeHr, endTimeHr, costPerHour = 50) {
     if (costPerHour < 0) {
         throw new Error('Invalid cost per hour');
     }
+    if (startTimeHr >= endTimeHr) {
+        throw new Error('Invalid start time');
+    }
     rentList.push({ startTimeHr, endTimeHr, costPerHour });
-    return rentList;
 }
 function Checkout() {
     let totalCost = 0;
     for (let rent of rentList) {
         totalCost += calculateTotalCost(calculateTotalTime(rent.startTimeHr, rent.endTimeHr), rent.costPerHour);
     }
+    rentList = [];
     return totalCost;
 }
 exports.carRentCost = {

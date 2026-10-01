@@ -28,14 +28,5 @@ const unitTest = () => __awaiter(void 0, void 0, void 0, function* () {
         console.log('Test case 2 failed');
         process.exit(1);
     }
-    // Unit test case3
-    const rentList = carRentCost_1.carRentCost.AddRent(10, 13);
-    if (rentList !== undefined) {
-        console.log('Test case 3 passed');
-    }
-    else {
-        console.log('Test case 3 failed');
-        process.exit(1);
-    }
 });
 unitTest();
