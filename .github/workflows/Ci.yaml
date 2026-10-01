@@ -1,10 +1,10 @@
-name: Unit Test
+name: Test
 
 on: [push]
 
 jobs:
   unitTest:
-    name: Unit Test
+    name: unitTest
     runs-on: ubuntu-latest
 
     steps:
@@ -26,8 +26,8 @@ jobs:
         run: node dist/test1.js
 
   integrationTest:
-    name: Integration Test
-    needs: [Unit Test]
+    name: integrationTest
+    needs: [unitTest]
     runs-on: ubuntu-latest
 
     steps:
