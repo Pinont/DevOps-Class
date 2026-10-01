@@ -3,7 +3,7 @@ name: Integration Test
 on:
   workflow_run:
     workflows: [Unit Test]
-    types: [completed_successfully]
+    types: [completed]
 
 jobs:
   integrationTest:
