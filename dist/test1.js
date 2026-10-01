@@ -11,8 +11,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("./utils");
 const unitTest = () => __awaiter(void 0, void 0, void 0, function* () {
+    console.log('Running unit tests...');
     // Unit test case1
-    console.log('Running unit test case1...');
     if (utils_1.utils.add(2, 2) === 4) {
         console.log('Test case 1 passed');
     }

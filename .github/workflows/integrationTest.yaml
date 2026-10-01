@@ -1,6 +1,9 @@
-name: test
+name: Integration Test
 
-on: [push]
+on:
+  workflow_run:
+    workflows: [Unit Test]
+    types: [completed]
 
 jobs:
   job1:
@@ -12,8 +15,9 @@ jobs:
 
       - name: Install node js
         uses: actions/setup-node@v4
-        with:
-          node-version: '24'
+
+      - name: Install dependencies
+        run: npm ci
 
       - name: Run Test
-        run: node dist/test1.js
+        run: tsc && node dist/IntegrationTest.ts

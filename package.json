@@ -4,7 +4,6 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "test": "tsc && node dist/test1.js",
     "dev": "npx nodemon"
   },
   "keywords": [],
