@@ -6,7 +6,8 @@ on:
     types: [completed]
 
 jobs:
-  job1:
+  unitTest:
+    needs: [Unit Test]
     runs-on: ubuntu-latest
 
     steps:
