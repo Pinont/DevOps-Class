@@ -29,7 +29,8 @@ const unitTest = () => __awaiter(void 0, void 0, void 0, function* () {
         process.exit(1);
     }
     // Unit test case3
-    if (carRentCost_1.carRentCost.AddRent(10, 13) !== undefined) {
+    const rentList = carRentCost_1.carRentCost.AddRent(10, 13);
+    if (rentList !== undefined) {
         console.log('Test case 3 passed');
     }
     else {

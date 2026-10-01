@@ -20,7 +20,8 @@ const unitTest = async() => {
     }
 
     // Unit test case3
-    if (carRentCost.AddRent(10, 13) !== undefined) {
+    const rentList = carRentCost.AddRent(10, 13);
+    if (rentList !== undefined) {
         console.log('Test case 3 passed');
     } else {
         console.log('Test case 3 failed');

@@ -14,8 +14,18 @@ interface RentCar {
 
 let rentList: RentCar[] = [];
 
-function AddRent(startTimeHr: number, endTimeHr: number, costPerHour: number = 50) {
+function AddRent(startTimeHr: number, endTimeHr: number, costPerHour: number = 50): RentCar[] | undefined {
+    if (startTimeHr < 0 || endTimeHr < 0) {
+        throw new Error('Invalid start time');
+    }
+    if (startTimeHr >= 24 || endTimeHr >= 24) {
+        throw new Error('Invalid end time');
+    }
+    if (costPerHour < 0) {
+        throw new Error('Invalid cost per hour');
+    }
     rentList.push({ startTimeHr, endTimeHr, costPerHour });
+    return rentList;
 }
 
 function Checkout() {
