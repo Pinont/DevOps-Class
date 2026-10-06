@@ -1,8 +1,21 @@
-import express, { Request, Response } from 'express';
+import { existsSync } from 'fs';
+import express from 'express';
+import mongoose from 'mongoose';
+import userRouter from './UserRoutes';
+import cors from 'cors';
 
-import mongoose from "mongoose";
-import userRouter from "./UserRoutes";
-import cors from "cors"
+if (existsSync('.env')) {
+    process.loadEnvFile('.env');
+}
+
+const mongoUsername = process.env.MONGO_USERNAME;
+const mongoPassword = process.env.MONGO_PASSWORD;
+
+if (!mongoUsername || !mongoPassword) {
+    throw new Error('MONGO_USERNAME and MONGO_PASSWORD must be set');
+}
+
+const mongoUri = `mongodb+srv://${encodeURIComponent(mongoUsername)}:${encodeURIComponent(mongoPassword)}@cluster0.pstr1gz.mongodb.net/?appName=Cluster0`;
 
 const app = express();
 
@@ -14,10 +27,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/users", userRouter);
 
-mongoose.connect("mongodb+srv://pinozenthailand_db_user:MVfj75qevmQf7RpN@cluster0.pstr1gz.mongodb.net/?appName=Cluster0", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-} as mongoose.ConnectOptions)
+mongoose.connect(mongoUri)
 .then(() => {
     console.log("Connected to MongoDB");
 })
